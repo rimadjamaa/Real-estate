@@ -29,7 +29,7 @@ class SliderController extends Controller
     {
         $request->validate([
             'title' => 'required|unique:sliders|max:255',
-            'image' => 'required|mimes:jpeg,jpg,png'
+            'image' => 'required|mimes:jpeg,jpg,png'//|mimes:jpeg,jpg,png
         ]);
 
         $image = $request->file('image');
@@ -42,7 +42,7 @@ class SliderController extends Controller
             if(!Storage::disk('public')->exists('slider')){
                 Storage::disk('public')->makeDirectory('slider');
             }
-            $slider = Image::make($image)->resize(1600, 480)->save();
+            $slider = Image::make($image)->resize(1600, 480)->stream();//->resize(1600, 480)->save();
             Storage::disk('public')->put('slider/'.$imagename, $slider);
         }else{
             $imagename = 'default.png';
