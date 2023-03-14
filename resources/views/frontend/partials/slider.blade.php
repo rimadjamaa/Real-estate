@@ -1,7 +1,7 @@
 <section class="carousel carousel-slider center">
     @if($sliders)
         @foreach($sliders as $slider)
-            <div class="carousel-item" style="background-image: url({{Storage::url('slider/'.$slider->image)}})" href="#{{$slider->id}}! background-position: center center; background-repeat: no-repeat; background-size: cover; height: 100vh;">
+            <div class="carousel-item" style="background-image: url({{Storage::url('slider/'.$slider->image)}})" href="#{{$slider->id}}! background-position: center center; background-repeat: no-repeat; background-size: cover; height: 80vh;">
                 <!-- Content goes here -->
                 <div class="slider-content">
                     <h2 class="white-text">{{ $slider->title }}</h2>

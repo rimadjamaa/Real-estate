@@ -43,7 +43,7 @@ class TestimonialController extends Controller
             if(!Storage::disk('public')->exists('testimonial')){
                 Storage::disk('public')->makeDirectory('testimonial');
             }
-            $testimonial = Image::make($image)->resize(160, 160)->save();
+            $testimonial = Image::make($image)->resize(160, 160)->stream();
             Storage::disk('public')->put('testimonial/'.$imagename, $testimonial);
         }else{
             $imagename = 'default.png';
