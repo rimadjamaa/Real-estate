@@ -6,6 +6,7 @@ Route::get('/slider', 'FrontpageController@slider')->name('slider.index');
 
 Route::get('/search', 'FrontpageController@search')->name('search');
 
+
 Route::get('/property', 'PagesController@properties')->name('property');
 Route::get('/property/{id}', 'PagesController@propertieshow')->name('property.show');
 Route::post('/property/message', 'PagesController@messageAgent')->name('property.message');
