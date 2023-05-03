@@ -7,9 +7,9 @@
                     @if(isset($navbarsettings[0]) && $navbarsettings[0]['name'])
                         {{ $navbarsettings[0]['name'] }}
                     @else
-                        Real State
+                        KeriaDz
                     @endif
-                    <i class="material-icons left">location_city</i>
+                    <i class="material-icons left">account_balance  </i>
                 </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                     <i class="material-icons">menu</i>
