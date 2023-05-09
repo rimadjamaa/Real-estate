@@ -64,6 +64,12 @@
                         <span>Posts</span>
                     </a>
                 </li>
+                <li class="{{ Request::is('admin/agents*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.agents.index') }}">
+                        <i class="material-icons">library_books</i>
+                        <span>Agents</span>
+                    </a>
+                </li>
 
                 <li class="header"> </li>
                 <li class="{{ Request::is('admin/galleries*') ? 'active' : '' }}">

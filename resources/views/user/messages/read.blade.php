@@ -46,7 +46,7 @@
                                 @else 
                                     <span>Read</span>
                                 @endif
-                            </button>
+                            </button> 
                         </form>
 
                     </div>
