@@ -32,7 +32,6 @@
                 <h4 class="section-heading">Featured Properties</h4>
             </div>
             <div class="row">
-
                 @foreach($properties as $property)
                     <div class="col s12 m4">
                         <div class="card">

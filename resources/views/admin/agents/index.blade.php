@@ -47,9 +47,6 @@
                                     <td></td>
                                     <td>{{$Agent->about}}</td>
                                     <td class="text-center">
-                                        <a href="" class="btn btn-success btn-sm waves-effect">
-                                            <i class="material-icons">visibility</i>
-                                        </a>
                                         <a href="" class="btn btn-info btn-sm waves-effect">
                                             <i class="material-icons">edit</i>
                                         </a>

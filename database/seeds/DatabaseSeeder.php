@@ -44,16 +44,6 @@ class DatabaseSeeder extends Seeder
                 'password'      => bcrypt('123456'),
                 'created_at'    => date("Y-m-d H:i:s")
             ],
-            [
-                'role_id'       => 2,
-                'name'          => 'Agent2',
-                'username'      => 'agent2',
-                'email'         => 'agent2@agent2.com',
-                'image'         => 'default.png',
-                'about'         => '',
-                'password'      => bcrypt('123456'),
-                'created_at'    => date("Y-m-d H:i:s")
-            ],
         ]);
 
 

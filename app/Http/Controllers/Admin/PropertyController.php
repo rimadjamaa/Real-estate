@@ -26,6 +26,14 @@ class PropertyController extends Controller
         return view('admin.properties.index',compact('properties'));
     }
 
+    public function approve($id)
+    {
+        $property = Property::findOrFail($id); // use $id instead of $property->id
+        $property->Is_Approved = true;
+        $property->save();
+
+        return redirect()->back()->with('success', 'The record has been approved.');
+    }
 
     public function create()
     {   
@@ -102,6 +110,7 @@ class PropertyController extends Controller
             $property->featured = true;
         }
         $property->agent_id = Auth::id();
+        $property->Is_Approved = true;
         $property->description          = $request->description;
         $property->video                = $request->video;
         $property->floor_plan           = $imagefloorplan;

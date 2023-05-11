@@ -37,6 +37,7 @@
                                     <th>Purpose</th>
                                     <th>Beds</th>
                                     <th>Baths</th>
+                                    <th>Is_Approved</th>
                                     <th><i class="material-icons small">comment</i></th>
                                     <th><i class="material-icons small">stars</i></th>
                                     <th width="150">Action</th>
@@ -62,7 +63,17 @@
                                     <td>{{$property->purpose}}</td>
                                     <td>{{$property->bedroom}}</td>
                                     <td>{{$property->bathroom}}</td>
-
+                                    <td>
+                                    @if($property->Is_Approved == true)
+                                            <span class="badge bg-green">Approved</span>
+                                        @else 
+                                            <span class="badge bg-pink">Pending</span>
+                                            <form action="{{ route('admin.properties.approve', ['id' => $property->id]) }}" method="POST">
+                                             @csrf
+                                             <button type="submit" class="btn btn-warning" style=" margin-top:10px;font-weight: bold;">click to Approve</button>
+                                            </form>
+                                        @endif
+                                    </td>
                                     <td>
                                         <span class="badge bg-indigo">{{ $property->comments_count }}</span>
                                     </td>

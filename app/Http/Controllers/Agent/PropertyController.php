@@ -100,6 +100,7 @@ class PropertyController extends Controller
         if(isset($request->featured)){
             $property->featured = true;
         }
+        $property->Is_Approved = false;
         $property->agent_id           = Auth::id();
         $property->video              = $request->video;
         $property->floor_plan         = $imagefloorplan;
