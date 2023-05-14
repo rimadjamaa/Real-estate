@@ -39,4 +39,9 @@ class Property extends Model
         return $this->hasMany(Rating::class, 'property_id');
     }
 
+    public function propertyType()
+    {
+        return $this->belongsTo(PropertyType::class);
+    }
+
 }

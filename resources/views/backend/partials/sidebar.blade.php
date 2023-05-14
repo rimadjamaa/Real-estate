@@ -24,6 +24,12 @@
                         <span>Property</span>
                     </a>
                 </li>
+                <li class="{{ Request::is('admin/propertiestype*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.propertiestype.index') }}">
+                        <i class="material-icons">label</i>
+                        <span>PropertyType</span>
+                    </a>
+                </li>
                 <li class="{{ Request::is('admin/features*') ? 'active' : '' }}">
                     <a href="{{ route('admin.features.index') }}">
                         <i class="material-icons">star</i>
@@ -66,7 +72,7 @@
                 </li>
                 <li class="{{ Request::is('admin/agents*') ? 'active' : '' }}">
                     <a href="{{ route('admin.agents.index') }}">
-                        <i class="material-icons">library_books</i>
+                        <i class="material-icons">group_add</i>
                         <span>Agents</span>
                     </a>
                 </li>

@@ -42,6 +42,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admi
     Route::resource('agents','AgentController');
     Route::resource('features','FeatureController');
     Route::resource('properties','PropertyController');
+    Route::resource('propertiestype','PropertyTypeController');
     Route::post('properties/approve/{id}', 'PropertyController@approve')->name('properties.approve');
     Route::post('properties/gallery/delete','PropertyController@galleryImageDelete')->name('gallery-delete');
 

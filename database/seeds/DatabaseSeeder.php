@@ -65,5 +65,15 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
+        DB::table('property_types')->insert([
+            [
+                'name'          => 'Appartement',
+            ],
+            [
+                'name'          => 'House',
+            ],
+        ]);
+
+
     }   
 }   

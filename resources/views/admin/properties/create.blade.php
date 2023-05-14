@@ -125,8 +125,10 @@
                             <label>Select type</label>
                             <select name="type" class="form-control show-tick">
                                 <option value="">-- Please select --</option>
-                                <option value="house">House</option>
-                                <option value="apartment">Apartment</option>
+                                @foreach ($propertyTypes as $propertyType)
+                                  <option value="{{ $propertyType->id }}">{{ $propertyType->name }}</option>
+                                @endforeach
+
                             </select>
                         </div>
                     </div>
