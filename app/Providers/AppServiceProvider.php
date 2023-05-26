@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Auth;
 
 use App\Property;
+use App\PropertyType;
 use App\Post;
 use App\Tag;
 use App\Category;
@@ -29,6 +30,9 @@ class AppServiceProvider extends ServiceProvider
             // SHARE TO ALL ROUTES
             $bedroomdistinct  = Property::select('bedroom')->distinct()->get();
             view()->share('bedroomdistinct', $bedroomdistinct);
+
+            $propertytypes = PropertyType::latest()->get();
+            view()->share('propertytypes', $propertytypes);
 
             $cities   = Property::select('city')->distinct()->get();
             $citylist = array();

@@ -37,50 +37,41 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'     => 'required|unique:posts|max:255',
-            'image'     => 'mimes:jpeg,jpg,png',
-            'categories'=> 'required',
-            'tags'      => 'required',
-            'body'      => 'required'
+            'title'      => 'required|unique:posts|max:255',
+            'image'      => 'image|mimes:jpeg,jpg,png',
+            'categories' => 'required',
+            'tags'       => 'required',
+            'body'       => 'required'
         ]);
-
-        $image = $request->file('image');
-        $slug  = str_slug($request->title);
-
-        if(isset($image)){
-            $currentDate = Carbon::now()->toDateString();
-            $imagename = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
-
-            if(!Storage::disk('public')->exists('posts')){
-                Storage::disk('public')->makeDirectory('posts');
-            }
-            $postimage = Image::make($image)->resize(1600, 980)->save();
-            Storage::disk('public')->put('posts/'.$imagename, $postimage);
-
-        }else{
-            $imagename = 'default.png';
-        }
-
+    
+        $slug = str_slug($request->title);
         $post = new Post();
         $post->user_id = Auth::id();
         $post->title = $request->title;
         $post->slug = $slug;
-        $post->image = $imagename;
         $post->body = $request->body;
-        if(isset($request->status)){
-            $post->status = true;
-        }
+        $post->status = $request->has('status');
         $post->is_approved = true;
         $post->save();
-
+    
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $currentDate = Carbon::now()->toDateString();
+            $imagename = $slug . '-' . $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+    
+            $image->storeAs('public/posts', $imagename);
+            $post->image = $imagename;
+            $post->save();
+        }
+    
         $post->categories()->attach($request->categories);
         $post->tags()->attach($request->tags);
-
+    
         Toastr::success('message', 'Post created successfully.');
         return redirect()->route('admin.posts.index');
-
     }
-
+    
 
     public function show(Post $post)
     {

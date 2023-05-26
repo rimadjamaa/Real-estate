@@ -6,7 +6,7 @@
         <div class="row m-b-0">
             <div class="col s12">
 
-                <form action="{{ route('search')}} " method="GET">
+                <form action="{{ route('search') }} " method="GET">
 
                     <div class="searchbar">
                         <div class="input-field col s12 m3">
@@ -17,9 +17,11 @@
                         <div class="input-field col s12 m2">
                             <select name="type" class="browser-default">
                                 <option value="" disabled selected>Choose Type</option>
-                                <option value="apartment">Apartment</option>
-                                <option value="house">House</option>
+                                @foreach($propertytypes as $propertytype)
+                                    <option value="{{ $propertytype->name }}">{{ $propertytype->name }}</option>
+                                @endforeach
                             </select>
+
                         </div>
 
                         <div class="input-field col s12 m2">

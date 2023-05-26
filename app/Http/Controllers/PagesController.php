@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\Contact;
 
 use App\Property;
+use App\PropertyType;
 use App\Message;
 use App\Gallery;
 use App\Comment;
@@ -90,7 +91,6 @@ class PagesController extends Controller
                                 })
                                 ->where('status',1)
                                 ->paginate(10);
-
         return view('pages.blog.index', compact('posts'));
     }
 
@@ -103,7 +103,6 @@ class PagesController extends Controller
             $post->increment('view_count');
             Session::put($blogkey,1);
         }
-
         return view('pages.blog.single', compact('post'));
     }
 
@@ -139,7 +138,6 @@ class PagesController extends Controller
                                 })
                                 ->where('status',1)
                                 ->paginate(10);
-
         return view('pages.blog.index', compact('posts'));
     }
 
@@ -152,7 +150,6 @@ class PagesController extends Controller
                                 })
                                 ->where('status',1)
                                 ->paginate(10);
-
         return view('pages.blog.index', compact('posts'));
     }
 

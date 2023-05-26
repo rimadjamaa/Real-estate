@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\Property;
+use App\PropertyType;
 use App\Feature;
 use App\PropertyImageGallery;
 use Carbon\Carbon;
@@ -29,8 +30,9 @@ class PropertyController extends Controller
     public function create()
     {   
         $features = Feature::all();
+        $propertyTypes = PropertyType::all();
 
-        return view('agent.properties.create',compact('features'));
+        return view('agent.properties.create',compact('features','propertyTypes'));
     }
 
 
@@ -39,8 +41,8 @@ class PropertyController extends Controller
         $request->validate([
             'title'     => 'required|unique:properties|max:255',
             'price'     => 'required',
-            'purpose'   => 'required',
-            'type'      => 'required',
+            'purpose' => 'required|in:sale,rent',
+            'type'      => 'required|exists:property_types,id',
             'bedroom'   => 'required',
             'bathroom'  => 'required',
             'city'      => 'required',
@@ -88,7 +90,8 @@ class PropertyController extends Controller
         $property->slug     = $slug;
         $property->price    = $request->price;
         $property->purpose  = $request->purpose;
-        $property->type     = $request->type;
+        $property->property_type_id = $request->type;
+        $property->type  = PropertyType::findOrFail($property->property_type_id)->name;
         $property->image    = $imagename;
         $property->bedroom  = $request->bedroom;
         $property->bathroom = $request->bathroom;

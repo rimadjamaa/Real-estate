@@ -24,7 +24,7 @@
                         <span>Property</span>
                     </a>
                 </li>
-                <li class="{{ Request::is('admin/propertiestype*') ? 'active' : '' }}">
+                <li class="{{  Request::is('admin/propertiestype*') ? 'active' : '' }}">
                     <a href="{{ route('admin.propertiestype.index') }}">
                         <i class="material-icons">label</i>
                         <span>PropertyType</span>

@@ -83,34 +83,30 @@
 
                             <div class="row">
                                 <div class="col s3">
-                                    <label class="label-custom" for="type">Property Type</label>
+                                    <label class="label-custom" for="purpose">Property Purpose</label>
                                     <p>
                                         <label>
-                                            <input class="with-gap" name="type" value="house" type="radio"  />
+                                            <input class="with-gap" name="purpose" value="sale" type="radio"  />
                                             <span>Sale</span>
                                         </label>
-                                    <p>
                                     </p>
+                                    <p>
                                         <label>
-                                            <input class="with-gap" name="type" value="apartment" type="radio"  />
+                                            <input class="with-gap" name="purpose" value="rent" type="radio"  />
                                             <span>Rent</span>
                                         </label>
                                     </p>
                                 </div>
                                 <div class="col s3">
-                                    <label class="label-custom" for="purpose">Property Purpose</label>
+                                    <label class="label-custom" for="type">Property Type</label>
+                                    @foreach ($propertyTypes as $propertyType)
                                     <p>
                                         <label>
-                                            <input class="with-gap" name="purpose" value="sale" type="radio"  />
-                                            <span>House</span>
+                                            <input class="with-gap" name="type" value="{{ $propertyType->id }}" type="radio"  />
+                                            <span>{{ $propertyType->name }}</span>
                                         </label>
                                     <p>
-                                    </p>
-                                        <label>
-                                            <input class="with-gap" name="purpose" value="rent" type="radio"  />
-                                            <span>Apartment</span>
-                                        </label>
-                                    </p>
+                                    @endforeach
                                 </div>
                                 <div class="input-field col s6">
                                     <select multiple name="features[]">

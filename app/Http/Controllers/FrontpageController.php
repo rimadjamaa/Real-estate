@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Testimonial;
 use App\Property;
+use App\PropertyType;
 use App\Service;
 use App\Slider;
 use App\Post;
@@ -42,7 +43,8 @@ class FrontpageController extends Controller
         $minarea  = $request->minarea;
         $maxarea  = $request->maxarea;
         $featured = $request->featured;
-
+        
+        
         $properties = Property::latest()->withCount('comments')
                                 ->when($city, function ($query, $city) {
                                     return $query->where('city', '=', $city);

@@ -229,67 +229,73 @@
                             
                         </div>
                     </div>
-
                 </div>
                 {{-- End ./COL M8 --}}
 
                 <div class="col s12 m4">
                     <div class="clearfix">
 
-                        <div>
-                            <ul class="collection with-header m-t-0">
-                                <li class="collection-header grey lighten-4">
-                                    <h5 class="m-0">Contact with Agent</h5>
-                                </li>
-                                <li class="collection-item p-0">
-                                    @if($property->user)
-                                        <div class="card horizontal card-no-shadow">
-                                            <div class="card-image p-l-10 agent-image">
-                                                <img src="{{Storage::url('users/'.$property->user->image)}}" alt="{{ $property->user->username }}" class="imgresponsive">
+                    <div>
+                        <ul class="collection with-header m-t-0">
+                            <li class="collection-header grey lighten-4">
+                                <h5 class="m-0">Contact with Agent</h5>
+                            </li>
+                            <li class="collection-item p-0">
+                                @if($property->user)
+                                    <div class="card horizontal card-no-shadow">
+                                        <div class="card-image p-l-10 agent-image">
+                                            <img src="{{Storage::url('users/'.$property->user->image)}}" alt="{{ $property->user->username }}" class="imgresponsive">
+                                        </div>
+                                        <div class="card-stacked">
+                                            <div class="p-l-10 p-r-10">
+                                                <h5 class="m-t-b-0">{{ $property->user->name }}</h5>
+                                                <strong>{{ $property->user->email }}</strong>
                                             </div>
-                                            <div class="card-stacked">
-                                                <div class="p-l-10 p-r-10">
-                                                    <h5 class="m-t-b-0">{{ $property->user->name }}</h5>
-                                                    <strong>{{ $property->user->email }}</strong>
-                                                </div>
-                                            </div>
                                         </div>
-                                        <div class="p-l-10 p-r-10">
-                                            <p>{{ $property->user->about }}</p>
-                                            <a href="{{ route('agents.show',$property->agent_id) }}" class="profile-link">Profile</a>
-                                        </div>
-                                    @endif
-                                </li>
-
-                                <li class="collection agent-message">
-                                    <form class="agent-message-box" action="" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="agent_id" value="{{ $property->user->id }}">
-                                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-                                        <input type="hidden" name="property_id" value="{{ $property->id }}">
-                                            
-                                        <div class="box">
-                                            <input type="text" name="name" placeholder="Your Name">
-                                        </div>
-                                        <div class="box">
-                                            <input type="email" name="email" placeholder="Your Email">
-                                        </div>
-                                        <div class="box">
-                                            <input type="number" name="phone" placeholder="Your Phone">
-                                        </div>
-                                        <div class="box">
-                                            <textarea name="message" placeholder="Your Msssage"></textarea>
-                                        </div>
-                                        <div class="box">
+                                    </div>
+                                    <div class="p-l-10 p-r-10">
+                                        <p>{{ $property->user->about }}</p>
+                                        <a href="{{ route('agents.show',$property->agent_id) }}" class="profile-link">Profile</a>
+                                    </div>
+                                @endif
+                            </li>
+                            <li class="collection agent-message">
+                                <form class="agent-message-box" action="" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="agent_id" value="{{ $property->user->id }}">
+                                    <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                                    <input type="hidden" name="property_id" value="{{ $property->id }}">
+                                    
+                                    <div class="box">
+                                        <input type="text" name="name" placeholder="Your Name" required>
+                                    </div>
+                                    <div class="box">
+                                        <input type="email" name="email" placeholder="Your Email" required>
+                                    </div>
+                                    <div class="box">
+                                        <input type="number" name="phone" placeholder="Your Phone" required>
+                                    </div>
+                                    <div class="box">
+                                        <textarea name="message" placeholder="Your Message" required></textarea>
+                                    </div>
+                                    <div class="box">
+                                        @auth
                                             <button id="msgsubmitbtn" class="btn waves-effect waves-light w100 indigo" type="submit">
                                                 SEND
                                                 <i class="material-icons left">send</i>
                                             </button>
+                                        @else
+                                        <div class="comment-login">
+                                            <h6>Please Login to Contact</h6>
+                                            <a href="{{ route('login') }}" class="btn indigo">Login</a>
                                         </div>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
+                                        @endauth
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+
 
                         <div>
                             <ul class="collection with-header">
