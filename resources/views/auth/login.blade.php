@@ -56,6 +56,13 @@
                                 </a>
                             </div>
                         </div>
+                        <p Style="text-align : center">OR</p><hr>
+                        <div class="row">
+                            <div class=" input-field col s12">
+                               <a href="" class="btn btn-block m-b-20" style="background-color: #B80F36;" >Login with Google</a>
+                               <a href="" class=" btn btn-block indigo">Login with Facebook</a>
+                            </div>
+                        </div>
 
                     </form>
                 </div>
