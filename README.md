@@ -12,10 +12,12 @@ REMS is a simple PHP script based on Laravel that helps you to manage small or m
 3. Posts
 4. Features
 5. Properties
-6. Sliders
-7. Testimonials
-8. Galleries
-9. Settings
+6. Properties_type
+7. Agents 
+8. Sliders
+9. Testimonials
+10. Galleries
+11. Settings
     1. Profile
     2. Message
     3. Change Password
@@ -47,4 +49,7 @@ REMS is a simple PHP script based on Laravel that helps you to manage small or m
     Email: `user@user.com` 
     Password: `123456`
 
+#### Demo
+
+![Example Image] (https://github.com/rimadjamaa/Real-estate/blob/main/public/demo/_.png)
 
