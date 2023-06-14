@@ -51,5 +51,5 @@ REMS is a simple PHP script based on Laravel that helps you to manage small or m
 
 #### Demo
 
-![Example Image] (https://github.com/rimadjamaa/Real-estate/blob/main/public/demo/_.png)
+![Example Image](https://github.com/rimadjamaa/Real-estate/blob/main/public/demo/_.png)
 
